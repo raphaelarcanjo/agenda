@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Agenda Python</title>
+  </head>
+  <body>
+    <h1>Tarefas</h1>
+
+    {% for task in tasks %}
+      <a href="{% url 'update' task.id %}">
+        <p>{{task.name}}</p>
+        <p>{{task.description}}</p>
+      </a>
+    {% endfor %}
+
+    <a href="{% url 'create' %}">Nova Tarefa</a>
+  </body>
+</html>

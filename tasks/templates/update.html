@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Agenda Python</title>
+  </head>
+  <body>
+    <h1>Editar Tarefa</h1>
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form }}
+
+      <input type="submit" value="Enviar">
+    </form>
+
+    <a href="{% url 'delete' task.id %}">Deletar tarefa</a>
+  </body>
+</html>
