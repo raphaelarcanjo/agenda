@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Agenda Python</title>
-  </head>
-  <body>
+{% extends 'base.html' %}
+
+{% block title %}Editar{% endblock title %}
+
+{% block content %}
     <h1>Editar Tarefa</h1>
 
     <form method="post">
@@ -15,5 +13,4 @@
     </form>
 
     <a href="{% url 'delete' task.id %}">Deletar tarefa</a>
-  </body>
-</html>
+{% endblock content %}

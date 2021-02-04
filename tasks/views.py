@@ -37,3 +37,9 @@ class TaskView():
             return redirect('list.html')
 
         return render(request, 'confirm_delete.html', {'task': task})
+
+    def stylesheet(request, file):
+        return render(request, 'assets/css/' + file + '.css', {}, content_type='text/css')
+
+    def scripts(request, file):
+        return render(request, 'assets/js/' + file + '.js', {}, content_type='application/javascript')
