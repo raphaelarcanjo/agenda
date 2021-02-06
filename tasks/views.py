@@ -34,7 +34,7 @@ class TaskView():
 
         if request.method == 'POST':
             task.delete()
-            return redirect('list.html')
+            return redirect('list')
 
         return render(request, 'confirm_delete.html', {'task': task})
 

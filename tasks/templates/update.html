@@ -7,10 +7,14 @@
 
     <form method="post">
       {% csrf_token %}
-      {{ form }}
+      {% for field in form %}
+        <div class="mb-3">
+          {{ field.label_tag }} {{ field }}
+        </div>
+      {% endfor %}
 
-      <input type="submit" value="Enviar">
+      <a href="{% url 'delete' task.id %}" class="btn btn-danger">Deletar tarefa</a>
+      <input type="submit" value="Enviar" class="btn btn-primary">
     </form>
 
-    <a href="{% url 'delete' task.id %}">Deletar tarefa</a>
 {% endblock content %}

@@ -5,13 +5,17 @@
 {% block content %}
   <h1>LISTA DE TAREFAS</h1>
 
-  {% for task in tasks %}
-    <a href="{% url 'update' task.id %}">
-      <p>{{task.name}}</p>
+  <ul class="shadow">
+    {% for task in tasks %}
+    <li class="p-3 border-bottom">
+      <a href="{% url 'update' task.id %}">
+        {{task.name}}
+      </a>
       <p>{{task.description}}</p>
-    </a>
-  {% endfor %}
+    </li>
+    {% endfor %}
+  </ul>
 
-  <a href="{% url 'create' %}">Nova Tarefa</a>
+  <a href="{% url 'create' %}" class="btn btn-primary">Nova Tarefa</a>
 
 {% endblock content %}

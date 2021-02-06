@@ -5,7 +5,7 @@ from django.db import models
 
 class Task(models.Model):
     name = models.CharField(max_length=20)
-    description = models.CharField(max_length=80)
+    description = models.TextField(max_length=80)
     done = models.BooleanField()
     date = models.DateField()
     time = models.TimeField()

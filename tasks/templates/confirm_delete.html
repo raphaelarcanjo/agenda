@@ -9,7 +9,7 @@
       {% csrf_token %}
 
       <p>TEM CERTEZA QUE DESEJA REMOVER A TAREFA?</p>
-      <a href="{% url 'list' %}">CANCELAR</a>
-      <input type="submit" value="CONFIRMAR">
+      <a href="{% url 'list' %}" class="btn btn-danger">CANCELAR</a>
+      <input type="submit" value="CONFIRMAR" class="btn btn-primary">
     </form>
 {% endblock content %}
