@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Task
 from .forms import TaskForm
+from datetime import datetime
 
 # Create your views here.
 
@@ -8,7 +9,14 @@ from .forms import TaskForm
 class TaskView():
     def list(request):
         tasks = Task.objects.all()
-        return render(request, 'list.html', {'tasks': tasks})
+        dt = datetime.now()
+        data = {
+            'tasks': tasks,
+            'date': dt.date(),
+            'time': dt.time(),
+        }
+
+        return render(request, 'list.html', data)
 
     def create(request):
         form = TaskForm(request.POST or None)

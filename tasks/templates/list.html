@@ -5,17 +5,25 @@
 {% block content %}
   <h1>LISTA DE TAREFAS</h1>
 
-  <ul class="shadow">
+  <ul class="shadow rounded">
     {% for task in tasks %}
-    <li class="p-3 border-bottom">
+    <li class="p-3{% if task.done %} alert alert-success{% endif %}
+    {% if task.date <= date and task.time <= time and not task.done %} alert alert-danger{% endif %}">
       <a href="{% url 'update' task.id %}">
         {{task.name}}
       </a>
-      <p>{{task.description}}</p>
+      {% if task.done %}<span class="float-end">Concluída</span>{% endif %}
+      {% if task.date <= date and task.time <= time and not task.done %}<span class="float-end">Atrasada</span>{% endif %}
+      <details>
+        <summary class="pb-3">Detalhes</summary>
+        <p>{{task.description}}</p>
+        <p>Data: {{task.date}}</p>
+        <p>Horário: {{task.time}}</p>
+      </details>
     </li>
     {% endfor %}
   </ul>
 
-  <a href="{% url 'create' %}" class="btn btn-primary">Nova Tarefa</a>
+  <a href="{% url 'create' %}" class="btn btn-primary float-end">Nova Tarefa</a>
 
 {% endblock content %}

@@ -13,8 +13,12 @@
         </div>
       {% endfor %}
 
-      <a href="{% url 'delete' task.id %}" class="btn btn-danger">Deletar tarefa</a>
-      <input type="submit" value="Enviar" class="btn btn-primary">
+      <a href="{% url 'list' %}" class="btn btn-danger">Cancelar</a>
+
+      <div class="float-end">
+        <a href="{% url 'delete' task.id %}" class="btn btn-danger">Deletar tarefa</a>
+        <input type="submit" value="Enviar" class="btn btn-primary">
+      </div>
     </form>
 
 {% endblock content %}
