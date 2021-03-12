@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Task
+from .models import Task, UserTask
 from .forms import TaskForm, RegistrationForm
 from datetime import datetime
 
@@ -9,7 +9,9 @@ from datetime import datetime
 
 @login_required
 def list(request):
-    tasks = Task.objects.all()
+    user = request.user
+    user_tasks = UserTask.objects.filter(user=user.id).values_list('task', flat=True)
+    tasks = Task.objects.filter(id__in=user_tasks).all()
     dt = datetime.now()
     data = {
         'tasks': tasks,
@@ -25,7 +27,10 @@ def create(request):
     form = TaskForm(request.POST or None)
 
     if form.is_valid():
-        form.save()
+        task = form.save()
+        user = request.user
+        bridge = UserTask(user=user.id, task=task)
+        bridge.save()
         return redirect('list')
 
     return render(request, 'create.html', {'form': form})
@@ -45,9 +50,12 @@ def update(request, id):
 
 @login_required
 def delete(request, id):
+    user = request.user
+    usertask = UserTask.objects.get(user=user.id, task=id)
     task = Task.objects.get(id=id)
 
     if request.method == 'POST':
+        usertask.delete()
         task.delete()
         return redirect('list')
 

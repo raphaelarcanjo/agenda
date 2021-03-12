@@ -10,5 +10,13 @@ class Task(models.Model):
     date = models.DateField()
     time = models.TimeField()
 
-    def __str__(self):
-        return self.name
+    def __int__(self):
+        return self.id
+
+
+class UserTask(models.Model):
+    user = models.IntegerField()
+    task = models.IntegerField()
+
+    def __int__(self):
+        return self.id
