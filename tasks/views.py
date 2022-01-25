@@ -4,8 +4,6 @@ from .models import Task, UserTask
 from .forms import TaskForm, RegistrationForm
 from datetime import datetime
 
-# Create your views here.
-
 
 @login_required
 def list(request):

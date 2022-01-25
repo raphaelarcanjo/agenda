@@ -9,10 +9,11 @@
 
   <h1>LISTA DE TAREFAS</h1>
 
-  <ul class="shadow rounded">
+  <ul class="nav flex-column">
     {% for task in tasks %}
-    <li class="p-3{% if task.done %} alert alert-success{% endif %}
-    {% if task.date <= date and task.time <= time and not task.done %} alert alert-danger{% endif %}">
+    <li class="rounded shadow nav-item p-3 alert {% if task.done %}alert-success
+    {% elif task.date <= date and task.time <= time and not task.done %}alert-danger
+    {% else %}alert-info{% endif %}">
       <a href="{% url 'update' task.id %}">
         {{task.name}}
       </a>

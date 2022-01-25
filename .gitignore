@@ -1,2 +1,4 @@
 db.sqlite3
-agenda/__pycache__
+__pycache__
+*/__pycache__
+*/*/__pycache__
