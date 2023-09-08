@@ -121,15 +121,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR + "static",
+    BASE_DIR + "/tasks/static",
 ]
 
 LOGIN_REDIRECT_URL = 'list'
 
 MESSAGE_TAGS = {
-    messages.ERROR: 'label label-danger',
-    messages.WARNING: 'label label-warning',
-    messages.DEBUG : 'label label-secondary',
-    messages.INFO: 'label label-info',
-    messages.SUCCESS: 'label label-success',
+    messages.ERROR: 'nav alert alert-danger',
+    messages.WARNING: 'nav alert alert-warning',
+    messages.DEBUG : 'nav alert alert-secondary',
+    messages.INFO: 'nav alert alert-info',
+    messages.SUCCESS: 'nav alert alert-success',
 }

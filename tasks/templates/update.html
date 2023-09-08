@@ -4,6 +4,7 @@
 
 {% block content %}
     <h1>Editar Tarefa</h1>
+    <hr />
 
     <form method="post">
       {% csrf_token %}
@@ -16,7 +17,7 @@
       <a href="{% url 'list' %}" class="btn btn-danger">Cancelar</a>
 
       <div class="float-end">
-        <a href="{% url 'delete' task.id %}" class="btn btn-danger">Deletar tarefa</a>
+        <a href="{% url 'delete' task.id %}" class="btn btn-danger">Remover tarefa</a>
         <input type="submit" value="Enviar" class="btn btn-primary">
       </div>
     </form>

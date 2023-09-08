@@ -7,23 +7,31 @@
     <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
   </div>
 
-  <h1>LISTA DE TAREFAS</h1>
+  <h1>Lista de Tarefas</h1>
+  <hr />
 
   <ul class="nav flex-column">
     {% for task in tasks %}
-    <li class="rounded shadow nav-item p-3 alert {% if task.done %}alert-success
+    <li class="rounded shadow-sm nav-item p-3 alert {% if task.done %}alert-success
     {% elif task.date <= date and task.time <= time and not task.done %}alert-danger
     {% else %}alert-info{% endif %}">
-      <a href="{% url 'update' task.id %}">
+      <a href="{% url 'update' task.id %}" class="fs-4">
         {{task.name}}
       </a>
+      <div class="btn-group float-end">
+        <a href="{% url 'update' task.id %}" class="btn btn-sm btn-primary">Editar</a>
+        <a href="{% url 'delete' task.id %}" class="btn btn-sm btn-danger">Remover</a>
+      </div>
+      <hr />
       {% if task.done %}<span class="float-end">Concluída</span>{% endif %}
       {% if task.date <= date and task.time <= time and not task.done %}<span class="float-end">Atrasada</span>{% endif %}
       <details>
         <summary class="pb-3">Detalhes</summary>
         <p>{{task.description}}</p>
-        <p>Data: {{task.date}}</p>
-        <p>Horário: {{task.time}}</p>
+        <p>
+          <span class="fw-bold">Data:</span> {{task.date}}</p>
+        <p>
+          <span class="fw-bold">Horário:</span> {{task.time}}</p>
       </details>
     </li>
     {% endfor %}
